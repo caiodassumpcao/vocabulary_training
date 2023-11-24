@@ -1,2 +1,21 @@
-<h1>Vocabulary Training</h1>
-<p>Find me in app/views/word/index.html.erb</p>
+<h1> Vocabulary training</h1>
+
+<h2><%= @random_word.name %></h2>
+
+<%= form_with(model: @user_answer, url: { action: "check_answer" }, method: "post") do |form| %>
+  <div class="field">
+    <%= form.label :answer, "Solução:" %>
+    <%= form.text_field :answer %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Verificar Resposta" %>
+  </div>
+<% end %>
+
+<ul>
+  <% @words.each do |word| %>
+    <li>
+      <%= word.name %>
+    </li>
+  <% end %>
+</ul>
