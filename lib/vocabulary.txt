@@ -19,4 +19,8 @@ scaffold
 passing
 commonly
 enclosed
+curly
+meaning
+ensure
+covered
 
