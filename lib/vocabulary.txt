@@ -14,3 +14,9 @@ aware
 prepend
 "as well"
 shorthand
+foreign
+scaffold
+passing
+commonly
+enclosed
+

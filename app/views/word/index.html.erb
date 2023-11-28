@@ -1,4 +1,5 @@
-<h1> Vocabulary training</h1>
+<!-- app/views/word/index.html.erb -->
+<h1>Vocabulary Training</h1>
 
 <h2><%= @random_word.name %></h2>
 
@@ -10,9 +11,7 @@
 
 <ul>
   <% @words.each do |word| %>
-    <li>
-      <%= word.name %>
-    </li>
+    <li><%= word.name %></li>
   <% end %>
 </ul>
 

@@ -10,14 +10,16 @@ class WordController < ApplicationController
     @user_answer = UserAnswer.new(user_answer_params)
 
     if @user_answer.save && @user_answer.correct_translation?
-      flash[:notice] = "Resposta correta! Parabéns!"
+      flash[:confirmation_message] = "Parabéns! Sua resposta está correta."
     else
       flash[:alert] = "Resposta incorreta. Tente novamente."
     end
 
-    redirect_to root_path
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash_messages") }
+      format.html { redirect_to root_path }
+    end
   end
-
   private
 
   def user_answer_params
