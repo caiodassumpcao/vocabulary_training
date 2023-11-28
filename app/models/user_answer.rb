@@ -3,24 +3,26 @@ class UserAnswer < ApplicationRecord
 
   validates :answer, presence: true
 
-  before_validation :downcase_and_strip_answer
+  before_validation :normalize_answer
 
-  def correct_translation?
-    return false if word.blank?
+  validate :correct_translation
+
+  private
+
+  def normalize_answer
+    self.answer = answer.to_s.downcase.strip
+  end
+
+  def correct_translation
+    return unless answer.present? && word.present?
 
     normalized_user_answer = normalize_string(answer)
     normalized_correct_answer = normalize_string(word.translate)
 
-    normalized_user_answer == normalized_correct_answer
-  end
-
-  private
-
-  def downcase_and_strip_answer
-    self.answer = answer.downcase.strip if answer.present?
+    errors.add(:answer, "não está correta") unless normalized_user_answer == normalized_correct_answer
   end
 
   def normalize_string(str)
-    str.downcase.strip if str.present?
+    str.to_s.downcase.strip
   end
 end

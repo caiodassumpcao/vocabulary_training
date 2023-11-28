@@ -3,6 +3,7 @@ class WordController < ApplicationController
     @words = Word.all
     @random_word = Word.order("RANDOM()").first
     @user_answer = UserAnswer.new
+    @confirmation_message = flash[:confirmation_message]
   end
 
   def check_answer

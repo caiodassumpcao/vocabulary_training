@@ -2,13 +2,9 @@
 
 <h2><%= @random_word.name %></h2>
 
-<%= form_with(model: @user_answer, url: { action: "check_answer" }, method: "post") do |form| %>
-  <div class="field">
-    <%= form.label :answer, "Solução:" %>
-    <%= form.text_field :answer %>
-  </div>
-  <div class="actions">
-    <%= form.submit "Verificar Resposta" %>
+<% if @confirmation_message.present? %>
+  <div class="confirmation-message">
+    <%= @confirmation_message %>
   </div>
 <% end %>
 
@@ -19,3 +15,14 @@
     </li>
   <% end %>
 </ul>
+
+<%= form_with(model: @user_answer, url: { action: "check_answer" }, method: "post") do |form| %>
+  <div class="field">
+    <%= form.label :answer, "Solução:" %>
+    <%= form.text_field :answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enviar Resposta" %>
+  </div>
+<% end %>
