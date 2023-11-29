@@ -1,0 +1,7 @@
+Rake - Ferramenta para executar tarefas, compilar, executar dependencias e etc
+setup -
+sprint - spring deixa o codigo em cache, starta e para mais rapido porem não atualiza.
+weback
+weback-dev-serve
+yarn - Controle do frontend
+teste- dsadas
